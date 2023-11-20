@@ -1,0 +1,10 @@
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
+
+#define MAX_NAME_LENGTH 100
+#define MAX_EXERCISE_LENGTH 1000
+#define MAX_DIFFICULTY 5
+#define NUM_WORDS 10
+#define MAX_WORD_LENGTH 20
+
+#endif
