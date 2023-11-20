@@ -79,16 +79,15 @@ void displayInterface(User* user, Exercise* exercise) {
     provideFeedback(user);
 }
 
-void adaptSystem(User* user) {
+void adaptSystem(User* user, Exercise* exercise) {
     if (user->accuracy > 90.0 && user->wpm > 30) {
         printf("You're ready for the next level! Increasing difficulty...\n");
         int nextDifficulty = (user->wpm / 30) + 1;
         if (nextDifficulty > MAX_DIFFICULTY) {
             nextDifficulty = MAX_DIFFICULTY;
         }
-        Exercise* nextExercise = generateExercise(nextDifficulty);
-        displayInterface(user, nextExercise);
-        free(nextExercise);
+        exercise = generateExercise(nextDifficulty);
+        displayInterface(user, exercise);
     } else {
         printf("Keep practicing to improve your WPM and accuracy!\n");
     }
@@ -100,7 +99,9 @@ int main() {
     strcpy(user.name, "Test User");
     Exercise* exercise = generateExercise(1);
     displayInterface(&user, exercise);
-    adaptSystem(&user);
+    while (exercise->difficulty < MAX_DIFFICULTY) {
+        adaptSystem(&user, exercise);
+    }
     free(exercise);
     return 0;
 }
