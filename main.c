@@ -90,6 +90,7 @@ void adaptSystem(User* user, Exercise* exercise) {
         displayInterface(user, exercise);
     } else {
         printf("Keep practicing to improve your WPM and accuracy!\n");
+        exit(0);
     }
 }
 
